@@ -2,7 +2,7 @@
 
 from omnigent.llms.context_window import fetch_model_pricing
 
-# Private, pinned to omnigent==0.22.0: the exact catalog targets upstream
+# Private, pinned to omnigent==0.20.0: the exact catalog targets upstream
 # derives for a model id (including Bedrock ``us.anthropic.claude-...-v1:0``
 # normalization). Used only to tell an exact match from a family estimate.
 from omnigent.onboarding.providers import _catalog_lookup_targets, find_catalog_models

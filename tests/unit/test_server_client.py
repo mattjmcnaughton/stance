@@ -5,6 +5,7 @@ import threading
 import time
 from collections.abc import Iterator
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+from importlib.metadata import version
 from pathlib import Path
 
 import pytest
@@ -41,7 +42,7 @@ class _Recorder(BaseHTTPRequestHandler):
         if self.valid_tokens and auth.removeprefix("Bearer ") not in self.valid_tokens:
             return self._send(401, {"error": "unauthorized"})
         if self.path.endswith("/v1/info"):
-            return self._send(200, {"server_version": "0.22.0"})
+            return self._send(200, {"server_version": version("omnigent")})
         if self.path.endswith("/v1/policy-registry"):
             return self._send(200, {"data": [{"handler": COST_BUDGET_HANDLER}]})
         return self._send(200, {"ok": True})
