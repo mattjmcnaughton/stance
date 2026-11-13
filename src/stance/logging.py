@@ -1,5 +1,7 @@
 """Structured logging configuration."""
 
+import sys
+
 import structlog
 
 from stance.config import settings
@@ -22,6 +24,6 @@ def configure_logging() -> None:
         ],
         wrapper_class=structlog.make_filtering_bound_logger(settings.log_level),
         context_class=dict,
-        logger_factory=structlog.PrintLoggerFactory(),
+        logger_factory=structlog.PrintLoggerFactory(file=sys.stderr),
         cache_logger_on_first_use=True,
     )
