@@ -62,11 +62,11 @@ Use `@pytest.mark.external` for tests that hit external services. These run via 
 
 ## Omnigent pin
 
-`omnigent==0.22.0` is exempt from `tool.uv.exclude-newer` through
-`exclude-newer-package` (with its lockstep `omnigent-client` and
-`omnigent-ui-sdk`), because it was published inside the one-week window. Stance
-uses a few private Omnigent helpers (see `docs/architecture.md`); re-run the
-integration and e2e suites before changing the pin.
+Stance pins `omnigent==0.20.0` (with its lockstep `omnigent-client` and
+`omnigent-ui-sdk`). A release published inside the `tool.uv.exclude-newer`
+window needs an `exclude-newer-package` exemption. Stance uses a few private
+Omnigent helpers (see `docs/architecture.md`); re-run the integration and e2e
+suites before changing the pin.
 
 ## Building
 

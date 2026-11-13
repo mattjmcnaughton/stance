@@ -9,7 +9,7 @@ import os
 from collections.abc import MutableMapping
 from pathlib import Path
 
-# Verified against omnigent 0.22.0:
+# Verified against omnigent 0.20.0:
 # - OMNIGENT_DISABLE_TELEMETRY / OMNIGENT_ANALYTICS=0: usage analytics off
 #   (omnigent/telemetry/environment.py), overriding an inherited opt-in.
 # - OMNIGENT_TELEMETRY_ENABLED=0: runtime OpenTelemetry off

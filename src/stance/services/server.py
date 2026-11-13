@@ -289,6 +289,10 @@ def resolve_server(explicit: str | None, configured: str | None) -> ServerTarget
         return ensure_local_server()
     record = _read_record()
     if record and record.get("url") == choice.rstrip("/"):
-        # The printed URL of Stance's own server still means local mode.
-        return ensure_local_server()
+        # The printed URL of Stance's own server still means local mode, but
+        # only while that server runs: once it is gone (`omnigent stop` also
+        # kills it), another server may own the same port.
+        status = local_server_status()
+        if status.get("running") and status.get("pid") == record.get("pid"):
+            return ensure_local_server()
     return connect_existing_server(choice)

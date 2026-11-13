@@ -1,7 +1,7 @@
 """Budget-protected native Omnigent sessions for Claude Code and Codex.
 
 Session creation reuses upstream's native-wrapper spec, bundle, and labels
-(private helpers pinned to omnigent==0.22.0) so the server treats the session
+(private helpers pinned to omnigent==0.20.0) so the server treats the session
 exactly like one ``omnigent claude``/``omnigent codex`` creates. The session is
 created without initial input or launch metadata; the budget policy is attached
 and read back before anything can start a harness.

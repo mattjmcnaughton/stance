@@ -289,6 +289,9 @@ def test_refuses_ordinary_local_daemon_selected_by_its_url(
     server's concrete URL, so selecting that URL must not bypass the check."""
     env, _ = runtime
     user_env = clean_env(tmp_path)  # opted in, no Stance settings
+    # A user's `omnigent stop` also stops Stance's server on the default port,
+    # so the user's server can take over the URL in Stance's stale record.
+    run([OMNIGENT, "stop", "--force"], user_env)
     started = run([OMNIGENT, "start", "--no-open", "--non-interactive"], user_env)
     assert started.returncode == 0, started.stderr
     try:

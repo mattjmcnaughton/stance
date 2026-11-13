@@ -3,7 +3,7 @@
 ## Overview
 
 Stance is a thin session/policy wrapper around stock Omnigent (pinned
-`omnigent==0.22.0`). It creates a native Claude Code or Codex root session,
+`omnigent==0.20.0`). It creates a native Claude Code or Codex root session,
 attaches Omnigent's built-in `cost_budget` policy, verifies it, and then hands
 the terminal to `omnigent claude|codex --resume <session>`. Omnigent owns the
 harness launch, hooks, usage accounting, and policy enforcement; Stance owns
@@ -63,7 +63,7 @@ spec's `llm_model`).
 
 ## Upstream coupling
 
-Private Omnigent helpers used, all pinned to 0.22.0:
+Private Omnigent helpers used, all pinned to 0.20.0:
 `harnesses.{claude,codex}_native.main._SESSION_LABELS`,
 `_materialize_{claude,codex}_agent_spec`, `chat._bundle_agent`,
 `chat._remote_headers`, `chat._REMOTE_AUTH_TOKEN_ENV`,

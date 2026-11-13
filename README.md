@@ -40,7 +40,7 @@ So keep settings where the harness reads them itself, or name them:
   With an existing server and only the shell variable, also set
   `OMNIGENT_RUNNER_ENV_PASSTHROUGH=OPENAI_API_KEY`.
 
-Stance pins `omnigent==0.22.0` and installs it alongside itself.
+Stance pins `omnigent==0.20.0` and installs it alongside itself.
 
 ## Install
 
@@ -129,6 +129,9 @@ daemon you run. Your Omnigent provider configuration (`~/.omnigent` config or
 are used as-is. Stance reuses its local server only when it started that
 server with the current privacy settings, or the running processes' environment
 shows them; otherwise it stops everything in its namespace and starts fresh.
+In Omnigent 0.20.0, `omnigent stop` also stops any server on the default port
+6767, so it can stop Stance's local server and the sessions it runs; Stance
+starts a fresh one on its next launch.
 
 With `--server URL` or `[server] url`, Stance uses that server with your
 existing Omnigent login for it (renewing an expired login from its refresh
@@ -150,7 +153,7 @@ calls to remote servers honor them.
 
 Before Omnigent is imported, Stance sets, overriding inherited opt-ins:
 
-| Variable | Value | Effect in Omnigent 0.22.0 |
+| Variable | Value | Effect in Omnigent 0.20.0 |
 | --- | --- | --- |
 | `OMNIGENT_DISABLE_TELEMETRY` | `1` | usage analytics off |
 | `OMNIGENT_ANALYTICS` | `0` | usage analytics off |
@@ -160,7 +163,7 @@ Before Omnigent is imported, Stance sets, overriding inherited opt-ins:
 They propagate to Stance's local server, host daemon, runners, and the harness
 process. `OMNIGENT_RUNNER_ENV_PASSTHROUGH` gains the two analytics names
 (existing entries are kept). Codex starts Omnigent's MCP bridge with a scrubbed
-environment that Stance cannot extend without patching Omnigent; in 0.22.0
+environment that Stance cannot extend without patching Omnigent; in 0.20.0
 that bridge loads no analytics emitter and tracing is off unless explicitly
 enabled, and a test guards this.
 
